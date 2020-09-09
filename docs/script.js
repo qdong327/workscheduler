@@ -117,15 +117,15 @@ function updateCalendar(day) {
 // Extra - countdown to your next appointment
 var timerEl = document.querySelector("#ticker");
 var calculatedTime;
-window.setInterval(function(){
+window.setInterval(function () {
     runTimer()
-},1000);
+}, 1000);
 
 function runTimer() {
     var minutesLeft = 60 - +(moment().minutes());
     var secondsLeft = 60 - +(moment().seconds());
     if (secondsLeft < 10) {
-        secondsLeft = "0"+secondsLeft
+        secondsLeft = "0" + secondsLeft
     }
     calculatedTime = (+minutesLeft + ":" + secondsLeft)
     timerEl.innerHTML = calculatedTime;
