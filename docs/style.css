@@ -1,6 +1,13 @@
 
 th {
   width: 120px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.btnParent {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .time-text {
@@ -68,16 +75,17 @@ textarea{
 
 .present {
   background-color: #ffa292;
-  color: white;
+  color: black;
+  font-style: italic;
 }
 
 .future {
-  background-color: #b4f8ed;
+  background-color: #678b85;
   color: white;
 }
 
 .saveBtn {
-  border-left: 3px solid black;
+  border-left: 4px solid black;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -89,14 +97,14 @@ textarea{
 }
 
 .saveBtn:hover {
-  font-size: 20px;
+  font-size: 10px;
   transition: all .3s ease-in-out;
   background-color: rgb(255, 255, 255);
 }
 
 .saveicon {
   margin: auto;
-  width: 50px;
+  width: 30px;
 }
 
 .input {

@@ -3,9 +3,6 @@ var getToday = document.querySelector("#currentDay");
 var momentToday = moment().format("MMMM DD YYYY");
 var timeText = document.querySelectorAll(".time-text");
 var saveBtn = document.querySelector(".saveicon");
-var userInput = document.querySelector(".time-text").innerHTML;
-var previouslyStored;
-var nowStored;
 var timeSpan = document.querySelector("#time-span");
 var count = 1;
 var value;
@@ -22,7 +19,9 @@ var dayObject = {
     "4:00 PM": "",
     "5:00 PM": "",
     "6:00 PM": "",
-}
+};
+
+//Load existing localstorage object on page load
 $(document).ready(function () {
     if (!localStorage.getItem("dayObject")) {
         updateCalendar(dayObject);
@@ -64,7 +63,7 @@ function displayClock() {
 getToday.innerHTML = momentToday;
 // // Current Time Display
 timeSpan.innerHTML = displayClock()
-// On click
+// On click, target items to change
 $(".saveBtn").click(function () {
     value = $(this).parent().siblings(".time-text").html();
     hourStr = $(this).parent().siblings(".time-value").html();
@@ -92,7 +91,7 @@ function hourCompare(hourStr) {
 //Saving user amended schedule
 function saveSchedule(hourStr, val) {
     if (!localStorage.getItem('dayObject')) {
-        window.onload = readFromLocalStorage();
+        readFromLocalStorage();
     }
     var workHours = JSON.parse(localStorage.getItem("dayObject"));
     workHours[hourStr] = val
@@ -104,56 +103,30 @@ function readFromLocalStorage() {
     localStorage.setItem('dayObject', JSON.stringify(dayObject));
 };
 
-function saveToLocalStorage(dayObject) {
-    localStorage.setItem('dayObject', JSON.stringify(dayObject));
+function saveToLocalStorage(dayObj) {
+    localStorage.setItem('dayObject', JSON.stringify(dayObj));
 }
 
-function updateCalendar(dayObject) {
-    $("th").each(function (index) {
-        var res = $(this).children("td");
-        $(this).children("td").text(dayObject[res.text()]);
+function updateCalendar(day) {
+    $("tr").each(function (index) {
+        var res = $(this).children(".time-value");
+        $(this).children(".time-text").text(day[res.text()]);
     })
 }
 
 // Extra - countdown to your next appointment
+var timerEl = document.querySelector("#ticker");
+var calculatedTime;
+window.setInterval(function(){
+    runTimer()
+},1000);
 
-
-
-
-
-
-
-
-
-// //On click, writeToLocalStorage
-// // saveBtn.addEventListener('click', writeToLocalStorage);
-
-//On load, read and display whatever is stored in Local Storage, read value from time property, assign as text back in element (using its class (.description) and id (specific to each hour)
-// function readFromLocalStorage() {
-//     for (var i = 0; i < timeText.length; i++) {
-//         // If previously stored exists in local storage, get it from local storage
-//         previouslyStored = JSON.parse(window.localStorage.getItem("previouslyStored")) || [];
-//         timeText[i].innerHTML = previouslyStored;
-//     }
-//     checkColor();
-// }
-
-// Not working correctly yet below
-//             - read text from text area (class = "time-text", should be parent of save button)
-//             - read schedule hour
-//             - trim text, trim schedule hour
-//             - send to local storage
-// function writeToLocalStorage() {
-//     for (var i = 0; i < timeText.length; i++) {
-//         // If userInput Exists, Write it to Local Storage
-//         if (userInput !== "") {
-//             nowStored = timeText[i].innerHTML;
-//             nowStored.innerHTML = userInput;
-//             previouslyStored.push(nowStored);
-//             previouslyStored = window.localStorage.setItem("previouslyStored", JSON.stringify(previouslyStored));
-//             userInput = window.localStorage.setItem("userInput", JSON.stringify(userInput));
-//             timeText[i].innerHTML = userInput;
-//         }
-//         checkColor();
-//     }
-// }
+function runTimer() {
+    var minutesLeft = 60 - +(moment().minutes());
+    var secondsLeft = 60 - +(moment().seconds());
+    if (secondsLeft < 10) {
+        secondsLeft = "0"+secondsLeft
+    }
+    calculatedTime = (+minutesLeft + ":" + secondsLeft)
+    timerEl.innerHTML = calculatedTime;
+}
