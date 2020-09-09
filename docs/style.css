@@ -1,3 +1,13 @@
+
+th {
+  width: 120px;
+}
+
+.time-text {
+  width: 80%;
+  white-space: pre-wrap;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -18,11 +28,20 @@ textarea{
   background-color: transparent;
   color: black;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 7px solid black;
 }
 
-.description{
-  white-space: pre-wrap;
+
+.lead{
+  padding: 10px;
+}
+
+.container{
+  padding: 10px;
+}
+
+.display-3{
+  padding: 25px;
 }
 
 .time-block{
@@ -48,24 +67,39 @@ textarea{
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: #ffa292;
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #b4f8ed;
   color: white;
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  border-left: 3px solid black;
   border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06AED5;
+  background-color: #d6d6d6;
+  align-self: flex-end;
   color: white;
+
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+  background-color: rgb(255, 255, 255);
+}
+
+.saveicon {
+  margin: auto;
+  width: 50px;
+}
+
+.input {
+  width: 650px;
+  border: white
 }
