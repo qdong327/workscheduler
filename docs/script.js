@@ -64,12 +64,11 @@ function displayClock() {
 getToday.innerHTML = momentToday;
 // // Current Time Display
 timeSpan.innerHTML = displayClock()
-
 // On click
 $(".saveBtn").click(function () {
-    value = $(this).siblings("td").val();
-    hourStr = $(this).parent("th").text();
-    console.log(this);
+    value = $(this).parent().siblings(".time-text").html();
+    hourStr = $(this).parent().siblings(".time-value").html();
+
     saveSchedule(hourStr, value);
 });
 
@@ -93,6 +92,7 @@ function hourCompare(hourStr) {
 //Saving user amended schedule
 function saveSchedule(hourStr, val) {
     if (!localStorage.getItem('dayObject')) {
+        window.onload = readFromLocalStorage();
     }
     var workHours = JSON.parse(localStorage.getItem("dayObject"));
     workHours[hourStr] = val
