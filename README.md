@@ -1,14 +1,25 @@
-# workscheduler
+# Work Day Scheduler
 
-A simple work scheduler that allows users to add, remove and modfy events to each hour. This uses the Moment.js API, jQuery, Javascript, and HTML/CSS.
+## Description:
+A simple work scheduler that allows users to add, remove and modfy events to each hour. Bonus features include ticking time clock as well as countdown to next hourly appointment.
 
 
+## Technologies Used:
+* Structure:
+  - HTML
+* Design/Frameworks:
+  - CSS
+  - Bootstrap
+* Functionality:
+  - Javascript
+  - jQuery
+  - Moment.js
 
-# Title
+### Deployed Github Page
+* [Github Page](https://qudoki.github.io/workscheduler/)
 
-## Description 1-2 sentences
-## Deployed Application:
-## Technologies Used
-## Screenshots (2-3)
-## License (MIT) - add in Github to each
-## Collaborators with contact, or Github if applicable.
+### Screenshots
+![Screenshot](./assets/workdayscheduler.jpg?raw=true "Functional App")
+
+### License
+* [Link to License](./assets/LICENSE.md)

@@ -35,9 +35,9 @@ $(document).ready(function () {
 //For loop to add class to various hours
 for (var property in dayObject) {
     var textInput = "#text-input" + count;
-    var hourNow = moment().format("H");
+    // var hourNow = moment().format("H");
     //Below testing if all times work
-    // var hourNow = 10;
+    var hourNow = 10;
     $(textInput).text(dayObject[property]);
     var timeId = "#time" + count;
     var timeStr = $(timeId).text();
